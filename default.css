@@ -1,0 +1,173 @@
+body{
+    background: #320;
+    margin:0;
+    background: #0F0700;
+    font-family: sans-serif;
+    background: linear-gradient(0deg, #024, #000);
+    min-height: 100%;
+    font-size: 1.3em;
+    user-select: none;
+    /* cursor: none; */
+}
+html{
+  height: 100%;
+}
+
+.testing{
+  border: 1px solid white;
+  background: red;
+}
+.testlight{
+  background: rgba(127, 127, 127, 0.2);
+}
+
+
+.uicompholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.uicomptitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(0deg, #022, #043);
+  color: white;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.uicompbody{
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(0deg, #003, #001);
+  color: white;
+}
+.uicompbodycontent{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.uicomponent{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #043;
+}
+.uicomphoriz{
+  flex-direction: row;
+}
+
+.tabctls{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: rgba(50,50,50);
+	width: 100%;
+	z-index: 4;
+  font-size: 1.3em;
+}
+.toptabs{
+	position: fixed;
+}
+.tabctl{
+	text-align: center;
+	flex-basis: 0px;
+	flex-grow: 1;
+	background-color: #EEEEEE;
+	color: black;
+	margin: 0rem;
+	padding: 0.2rem 0.5rem;
+	border: 1px solid #000000;
+}
+.selecttab{
+  background: linear-gradient(0deg, #F70, #FF0);
+}
+
+.maincontentpane{
+  transition: opacity 0.3s;
+  pointer-events: none;
+  opacity: 0.0;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: calc(100% - 2.3em);
+}
+.mcselected{
+  pointer-events: auto;
+  opacity: 1.0;
+}
+
+
+#modalcover{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(64, 64, 64, 0.8);
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+#modalcover.showing{
+	opacity: 1;
+}
+#modal{
+	position: fixed;
+	margin: auto;
+	top: 0px;
+	left: 0px;
+	top: calc(50% - 8em);
+	left: calc(50% - 12em);
+	width: 24em;
+	height: 16em;
+	background: #544;
+	border: 1px solid #DBA;
+	font-size: 1.25em;
+}
+@media screen and (max-width: 32em) {
+    #modal {
+				width: 99%;
+        width: calc(100% - 3px);
+				left: 0;
+    }
+}
+.modalbody{
+	color: #FFF;
+	margin: 0.4em;
+}
+.modalbuttonbar{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+}
+.modalbtn{
+	flex-basis: 0px;
+	flex-grow: 1;
+}
+.groupboxtitle{
+	background: linear-gradient(0deg, #000, #245);
+	color: #FFF;
+	padding: 0.3em;
+	margin-bottom: 0.4em;
+	font-weight: bold;
+}
+
+button{
+	background: linear-gradient(#9FB, #56F);
+	border: 0.03em solid #006;
+	font-size: 122%;
+	cursor: pointer;
+}
+button:hover{
+	background: linear-gradient(#FF2, #FA1);
+}
+button:active{
+	background: linear-gradient(#FE7, #FF2);
+}

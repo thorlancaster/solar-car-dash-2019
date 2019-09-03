@@ -1,0 +1,74 @@
+/*
+  This file controls the placements and shape of various UI elements in the GUI
+  It is NOT to be used for styling beyond placement and shape
+*/
+
+
+/*############# Overview Tab #############*/
+#ov-speedometer{
+  width: 33%;
+  height: 55%;
+  top: 0%;
+  left: 33.5%;
+}
+#ov-powerout{
+  width: 33%;
+  height: 55%;
+  top: 0%;
+  left: 0%;
+}
+#ov-powerin{
+  width: 33%;
+  height: 55%;
+  top: 0%;
+  left: 67%;
+}
+#ov-batttemp{
+  width: 33%;
+  height: 12%;
+  top: 60%;
+  left: 0%;
+}
+#ov-motor1temp{
+  width: 33%;
+  height: 12%;
+  top: 73%;
+  left: 0%;
+}
+#ov-esc1temp{
+  width: 33%;
+  height: 12%;
+  top: 86%;
+  left: 0%;
+}
+#ov-solartemp{
+  width: 33%;
+  height: 12%;
+  top: 60%;
+  left: 34%;
+}
+#ov-motor2temp{
+  width: 33%;
+  height: 12%;
+  top: 73%;
+  left: 34%;
+}
+#ov-esc2temp{
+  width: 33%;
+  height: 12%;
+  top: 86%;
+  left: 34%;
+}
+#ov-clockdisp{
+  width: 31%;
+  height: 36%;
+  top: 68%;
+  left: 68%;
+}
+/*############# Power Usage Tab #############*/
+#pu-solarchart{
+  width: 33%;
+  height: 36%;
+  top: 0%;
+  left: 33.5%;
+}
