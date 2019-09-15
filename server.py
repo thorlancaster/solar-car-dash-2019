@@ -17,4 +17,3 @@ while 1:
     connection.sendall(str.encode(jsonFile))
     connection.close()
 
-connection.close
