@@ -12,7 +12,11 @@ class SolarCarGUI {
     this.contentPanes = DGE("mcpanes");
     this.gui = Object();
     this.gui.overview = new GUICollection();
+    this.gui.powerUsage = new GUICollection();
+    this.gui.solar = new GUICollection();
+    this.gui.settings = new GUICollection();
     this.initPaneOverview();
+    this.initPanePowerUsage();
   }
   initPaneOverview(){
     var thisGui = this.gui.overview;
@@ -75,18 +79,22 @@ class SolarCarGUI {
     clockDisp.setFontSize(2.8);
     clockDisp.setValue("--:--:--");
     thisGui.clockDisp = clockDisp;
-
-
-    // Page 2
-    var solarChart = new UIGauge(DGE("pu-solarchart"));
-    solarChart.setTitle("TEST");
-    solarChart.setValue(42);
-    thisGui.solarChart = solarChart;
-
+  }
+  initPanePowerUsage(){
+    var thisGui = this.gui.powerUsage;
+    // speedometer
+    var speed = new UIGauge(DGE("pu-speedometer"));
+    speed.setTitle("Speed - MPH");
+    speed.setFontSize(5);
+    speed.setValue(45);
+    thisGui.speed = speed;
   }
   resize(){
     // TODO resize elements by what tab is selected if performance is issue
     this.gui.overview.resize();
+    this.gui.powerUsage.resize();
+    this.gui.solar.resize();
+    this.gui.settings.resize();
   }
   setTab(tab){
     var tabEl = this.controlBar.getElementsByClassName("tc-"+tab)[0];
