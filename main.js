@@ -8,7 +8,7 @@
 var GUI;
 function init(){
   GUI = new SolarCarGUI();
-  GUI.setTab("overview");
+  GUI.setTab("powerusage");
   if(document.mainTmr)
     clearInterval(document.mainTmr);
   document.mainTmr = setInterval(tick, 1000);

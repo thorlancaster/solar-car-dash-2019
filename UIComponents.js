@@ -48,6 +48,9 @@ class UIGauge{
     el.style.width = size + "px";
     el.style.height = size / ar + "px";
   }
+  update(){
+
+  }
 }
 
 /**
@@ -110,5 +113,63 @@ class UIMiniGauge{
   }
   update(){
 
+  }
+}
+
+
+/**
+* Class for UI graph, with a title bar on top and a canvas graph at the bottom
+* 2:1 default aspect ratio, can be changed
+*/
+class UIGraph{
+  constructor(el){
+    el.classList.add("uicompholder");
+    var mainEl = DCE("div");
+    mainEl.className = "uicomponent";
+    el.appendChild(mainEl);
+    var title = DCE("div");
+    title.className = "uicomptitle";
+    title.innerText = "UIGraph"
+    mainEl.appendChild(title);
+    var body = DCE("div");
+    body.className = "uicompbody";
+    var bodyContent = DCE("canvas");
+    bodyContent.className = "uicompbodycontent";
+    body.appendChild(bodyContent);
+    mainEl.appendChild(body);
+    this.root = el;
+    this.el = mainEl;
+    this.title = title;
+    this.bodyContent = bodyContent;
+    this.ctx = bodyContent.getContext("2d");
+    this.aspectRatio = 1.8;
+    this.resize();
+  }
+  setAspectRatio(asp){
+    this.aspectRatio = asp;
+    this.resize();
+  }
+  setValue(str){
+    this.bodyContent.innerText = str;
+  }
+  setTitle(str){
+    this.title.innerText = str;
+  }
+  resize(){
+    var root = this.root;
+    var el = this.el;
+    var ar = this.aspectRatio;
+    var size = Math.min(root.offsetWidth, root.offsetHeight*ar);
+    el.style.width = size + "px";
+    el.style.height = size / ar + "px";
+    this.redrawCanvas();
+  }
+  update(){
+    this.redrawCanvas();
+  }
+  redrawCanvas(){
+    var ctx = this.ctx;
+    var data = [5, 2, 6, 2, 5];
+    CanvasGraphics.drawGraph(ctx, data);
   }
 }

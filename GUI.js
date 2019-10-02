@@ -88,10 +88,8 @@ class SolarCarGUI {
     speed.setValue(45);
     thisGui.speed = speed;
 
-    var efficiency = new UIGauge(DGE("pu-example"));
+    var efficiency = new UIGraph(DGE("pu-efficiency"));
     efficiency.setTitle("Wh / mile");
-    efficiency.setFontSize(5);
-    efficiency.setValue(90);
     thisGui.efficiency = efficiency;
 
     // Power Usage chart

@@ -66,14 +66,14 @@
 }
 /*############# Power Usage Tab #############*/
 #pu-speedometer{
-  width: 33%;
+  width: 26%;
   height: 36%;
   top: 0%;
-  left: 33.5%;
+  left: 37%;
 }
 
-#pu-example {
-  width: 33%;
+#pu-efficiency {
+  width: 36%;
   height: 36%;
   top: 0%;
   left: 0%;
