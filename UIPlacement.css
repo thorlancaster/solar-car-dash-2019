@@ -3,7 +3,6 @@
   It is NOT to be used for styling beyond placement and shape
 */
 
-
 /*############# Overview Tab #############*/
 #ov-speedometer{
   width: 33%;
@@ -61,8 +60,8 @@
 }
 #ov-clockdisp{
   width: 31%;
-  height: 36%;
-  top: 68%;
+  height: 22%;
+  top: 78%;
   left: 68%;
 }
 /*############# Power Usage Tab #############*/
@@ -71,4 +70,11 @@
   height: 36%;
   top: 0%;
   left: 33.5%;
+}
+
+#pu-example {
+  width: 33%;
+  height: 36%;
+  top: 0%;
+  left: 0%;
 }

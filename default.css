@@ -1,16 +1,28 @@
 body{
     background: #320;
     margin:0;
-    background: #0F0700;
+    background: #000;
     font-family: sans-serif;
-    background: linear-gradient(0deg, #024, #000);
-    min-height: 100%;
     font-size: 1.3em;
     user-select: none;
-    /* cursor: none; */
 }
 html{
   height: 100%;
+}
+
+#main{
+  width: 800px;
+  height: 480px;
+  background: linear-gradient(0deg, #024, #000);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: calc(50% - 400px);
+}
+
+#mcpanes{
+  height: calc(100% - 0.5em);
+  position: relative;
 }
 
 .testing{
@@ -27,6 +39,7 @@ html{
   align-items: center;
   justify-content: center;
   position: absolute;
+  background: rgba(255, 255, 255, 0.3);
 }
 .uicomptitle{
   display: flex;
@@ -66,24 +79,18 @@ html{
 .tabctls{
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
-	background-color: rgba(50,50,50);
-	width: 100%;
-	z-index: 4;
   font-size: 1.3em;
+  margin-bottom: 0.25em;
 }
-.toptabs{
-	position: fixed;
-}
+
 .tabctl{
 	text-align: center;
 	flex-basis: 0px;
 	flex-grow: 1;
-	background-color: #EEEEEE;
+	background-color: #EEE;
 	color: black;
-	margin: 0rem;
-	padding: 0.2rem 0.5rem;
-	border: 1px solid #000000;
+	padding: 0.1em 0.3em;
+	border: 1px solid #000;
 }
 .selecttab{
   background: linear-gradient(0deg, #F70, #FF0);
@@ -93,10 +100,10 @@ html{
   transition: opacity 0.3s;
   pointer-events: none;
   opacity: 0.0;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   width: 100%;
-  height: calc(100% - 2.3em);
+  height: 100%;
 }
 .mcselected{
   pointer-events: auto;

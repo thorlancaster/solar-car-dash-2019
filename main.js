@@ -16,7 +16,8 @@ function init(){
 }
 
 function resize(){
-  var sz = Math.min(window.innerWidth, window.innerHeight*1.7);
+  var mainEl = DGE("main");
+  var sz = Math.min(mainEl.scrollWidth, mainEl.scrollHeight*1.7);
   document.body.style.fontSize = sz/40+"px";
   GUI.resize();
 }

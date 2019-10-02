@@ -13,7 +13,6 @@ class SolarCarGUI {
     this.gui = Object();
     this.gui.overview = new GUICollection();
     this.gui.powerUsage = new GUICollection();
-    this.gui.solar = new GUICollection();
     this.gui.settings = new GUICollection();
     this.initPaneOverview();
     this.initPanePowerUsage();
@@ -88,12 +87,22 @@ class SolarCarGUI {
     speed.setFontSize(5);
     speed.setValue(45);
     thisGui.speed = speed;
+
+    var efficiency = new UIGauge(DGE("pu-example"));
+    efficiency.setTitle("Wh / mile");
+    efficiency.setFontSize(5);
+    efficiency.setValue(90);
+    thisGui.efficiency = efficiency;
+
+    // Power Usage chart
+    // var power = new UIChart(DGE("pu-powerchart"));
+    // power.setTitle("Power Usage");
+    // power.setData(1000, 3000, 5000, 4000, 2000, 3000);
   }
   resize(){
     // TODO resize elements by what tab is selected if performance is issue
     this.gui.overview.resize();
     this.gui.powerUsage.resize();
-    this.gui.solar.resize();
     this.gui.settings.resize();
   }
   setTab(tab){
