@@ -5,13 +5,14 @@
 *   A function resize() to be called when the page is resized
 *   Functions to poll the local server for data
 */
-var GUI;
+var GUI, solarCarData;
 function init(){
   GUI = new SolarCarGUI();
-  GUI.setTab("powerusage");
+  solarCarData = new SolarCarData();
+  GUI.setTab("overview");
   if(document.mainTmr)
     clearInterval(document.mainTmr);
-  document.mainTmr = setInterval(tick, 1000);
+  document.mainTmr = setInterval(tick, 250);
   resize();
 }
 
@@ -23,10 +24,17 @@ function resize(){
 }
 
 function tick(){
+  tick.tick |= 0;
   var d = new Date();
-  var clk = padTime(d.getHours())+":"+padTime(d.getMinutes())+":"+padTime(d.getSeconds());
-  GUI.gui.overview.clockDisp.setValue(clk);
+  solarCarData.time.setFromDate(d);
+  if(tick.tick >= 3){
+    solarCarData.updateHistory();
+    tick.tick = 0;
+  }
+  update();
+  tick.tick++;
 }
-function padTime(num){
-  if(num > 9) return num; return "0"+num;
+
+function update(){
+  GUI.update(solarCarData);
 }

@@ -4,64 +4,70 @@
 */
 
 /*############# Overview Tab #############*/
-#ov-speedometer{
-  width: 33%;
-  height: 55%;
-  top: 0%;
-  left: 33.5%;
-}
 #ov-powerout{
-  width: 33%;
-  height: 55%;
+  width: 30%;
+  height: 57%;
   top: 0%;
-  left: 0%;
+  left: 2%;
+}
+#ov-speedometer{
+  width: 30%;
+  height: 57%;
+  top: 0%;
+  left: 35%;
 }
 #ov-powerin{
-  width: 33%;
-  height: 55%;
+  width: 30%;
+  height: 57%;
   top: 0%;
-  left: 67%;
+  left: 68%;
 }
 #ov-batttemp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 60%;
-  left: 0%;
+  left: 2%;
 }
 #ov-motor1temp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 73%;
-  left: 0%;
+  left: 2%;
 }
 #ov-esc1temp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 86%;
-  left: 0%;
+  left: 2%;
 }
 #ov-solartemp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 60%;
-  left: 34%;
+  left: 35%;
 }
 #ov-motor2temp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 73%;
-  left: 34%;
+  left: 35%;
 }
 #ov-esc2temp{
-  width: 33%;
-  height: 12%;
+  width: 30%;
+  height: 13%;
   top: 86%;
-  left: 34%;
+  left: 35%;
+}
+#ov-battpct{
+  width: 30%;
+  height: 19%;
+  top: 58%;
+  left: 68%;
 }
 #ov-clockdisp{
-  width: 31%;
-  height: 22%;
-  top: 78%;
+  width: 30%;
+  height: 19%;
+  top: 79%;
   left: 68%;
 }
 /*############# Power Usage Tab #############*/
@@ -71,10 +77,28 @@
   top: 0%;
   left: 37%;
 }
-
-#pu-efficiency {
-  width: 36%;
+#pu-range{
+  width: 26%;
   height: 36%;
+  top: 38%;
+  left: 37%;
+}
+
+#pu-efficiency{
+  width: 36%;
+  height: 32%;
   top: 0%;
+  left: 0%;
+}
+#pu-solarchart{
+  width: 36%;
+  height: 32%;
+  top: 34%;
+  left: 0%;
+}
+#pu-powerchart{
+  width: 36%;
+  height: 32%;
+  top: 68%;
   left: 0%;
 }

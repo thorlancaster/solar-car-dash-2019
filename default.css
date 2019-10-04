@@ -16,7 +16,7 @@ html{
   background: linear-gradient(0deg, #024, #000);
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
   left: calc(50% - 400px);
 }
 
@@ -25,21 +25,13 @@ html{
   position: relative;
 }
 
-.testing{
-  border: 1px solid white;
-  background: red;
-}
-.testlight{
-  background: rgba(127, 127, 127, 0.2);
-}
-
-
 .uicompholder{
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
+  /* Uncomment below to show bounding boxes */
+  /* background: rgba(255, 255, 255, 0.3); */
 }
 .uicomptitle{
   display: flex;
@@ -66,6 +58,9 @@ html{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+}
+canvas.uicompbodycontent, image.uicompbodycontent{
+  height: 100%;
 }
 .uicomponent{
   display: flex;

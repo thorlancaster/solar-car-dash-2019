@@ -23,54 +23,50 @@ class SolarCarGUI {
     var speed = new UIGauge(DGE("ov-speedometer"));
     speed.setTitle("Speed - MPH");
     speed.setFontSize(7);
-    speed.setValue(45);
     thisGui.speed = speed;
 
     // power out
     var powerOut = new UIGauge(DGE("ov-powerout"));
-    powerOut.setTitle("Watts Out");
-    powerOut.setFontSize(5);
-    powerOut.setValue(1350);
+    powerOut.setTitle("Motor Watts");
+    powerOut.setFontSize(4);
     thisGui.powerOut = powerOut;
 
     // power in
     var powerIn = new UIGauge(DGE("ov-powerin"));
-    powerIn.setTitle("Watts In");
-    powerIn.setFontSize(5);
-    powerIn.setValue(955);
+    powerIn.setTitle("Solar Watts");
+    powerIn.setFontSize(4);
     thisGui.powerIn = powerIn;
 
     // Battery temperature
     UIMiniGauge.setDefaultMinTitleWidth(55);
     var battTemp = new UIMiniGauge(DGE("ov-batttemp"));
     battTemp.setTitle("Batt Temp");
-    battTemp.setValue(33);
     thisGui.battTemp = battTemp;
     // Solar temperature
     var solarTemp = new UIMiniGauge(DGE("ov-solartemp"));
     solarTemp.setTitle("Solar Temp");
-    solarTemp.setValue(37);
     thisGui.solarTemp = solarTemp;
     // Motor1 temperature
     var motor1Temp = new UIMiniGauge(DGE("ov-motor1temp"));
     motor1Temp.setTitle("Motor1 Temp");
-    motor1Temp.setValue(45);
     thisGui.motor1Temp = motor1Temp;
     // ESC1 temperature
     var esc1Temp = new UIMiniGauge(DGE("ov-esc1temp"));
     esc1Temp.setTitle("ESC1 Temp");
-    esc1Temp.setValue(42);
     thisGui.esc1Temp = esc1Temp;
     // Motor2 temperature
     var motor2Temp = new UIMiniGauge(DGE("ov-motor2temp"));
     motor2Temp.setTitle("Motor2 Temp");
-    motor2Temp.setValue(45);
     thisGui.motor2Temp = motor2Temp;
     // ESC2 temperature
     var esc2Temp = new UIMiniGauge(DGE("ov-esc2temp"));
     esc2Temp.setTitle("ESC2 Temp");
-    esc2Temp.setValue(42);
     thisGui.esc2Temp = esc2Temp;
+
+    // Battery percentage
+    var battPct = new PercentGauge(DGE("ov-battpct"));
+    thisGui.battPct = battPct;
+
     // Clock
     var clockDisp = new UIGauge(DGE("ov-clockdisp"));
     clockDisp.setTitle("");
@@ -81,24 +77,72 @@ class SolarCarGUI {
   }
   initPanePowerUsage(){
     var thisGui = this.gui.powerUsage;
-    // speedometer
+    // Speedometer
     var speed = new UIGauge(DGE("pu-speedometer"));
     speed.setTitle("Speed - MPH");
     speed.setFontSize(5);
-    speed.setValue(45);
     thisGui.speed = speed;
 
+    var range = new UIGauge(DGE("pu-range"));
+    range.setTitle("Est. Miles Left");
+    range.setFontSize(4);
+    thisGui.range = range;
+
+    // Graphs
     var efficiency = new UIGraph(DGE("pu-efficiency"));
     efficiency.setTitle("Wh / mile");
+    efficiency.setXAxisText("Past 5 minutes");
     thisGui.efficiency = efficiency;
 
-    // Power Usage chart
-    // var power = new UIChart(DGE("pu-powerchart"));
-    // power.setTitle("Power Usage");
-    // power.setData(1000, 3000, 5000, 4000, 2000, 3000);
+    var powerOut = new UIGraph(DGE("pu-powerchart"));
+    powerOut.setTitle("Motor Watts");
+    powerOut.setXAxisText("Past 5 minutes");
+    thisGui.powerOut = powerOut;
+
+    var powerIn = new UIGraph(DGE("pu-solarchart"));
+    powerIn.setTitle("Solar Watts");
+    powerIn.setXAxisText("Past 5 minutes");
+    thisGui.powerIn = powerIn;
   }
+
+  // Update the UI of the selected tab with a SolarCarData object (see SolarCarData.js)
+  // If no data object is provided, the last one provided will be used.
+  update(d){
+    if(d == undefined)
+      d = this.lastData;
+    else
+      this.lastData = d;
+    if(d == undefined) return;
+    switch(this.selectedTabName){
+      case "overview":
+        var o = this.gui.overview;
+        o.powerOut.setValue(d.motor1Power + d.motor2Power);
+        o.powerIn.setValue(d.solarPower);
+        o.speed.setValue(d.speed);
+        o.battTemp.setValue(d.battTemp);
+        o.solarTemp.setValue(d.solarTemp);
+        o.esc1Temp.setValue(d.esc1Temp);
+        o.esc2Temp.setValue(d.esc2Temp);
+        o.motor1Temp.setValue(d.motor1Temp);
+        o.motor2Temp.setValue(d.motor2Temp);
+        o.clockDisp.setValue(d.time.getClockStr());
+      break;
+      case "powerusage":
+        var o = this.gui.powerUsage;
+        o.speed.setValue(d.speed);
+        o.range.setValue("?");
+        o.efficiency.setValue(d.efficiencyHistory.samples);
+        o.powerOut.setValue(d.powerOutHistory.samples);
+        o.powerIn.setValue(d.powerInHistory.samples);
+      break;
+      case "settings":
+        var o = this.gui.settings;
+      break;
+    }
+  }
+
+
   resize(){
-    // TODO resize elements by what tab is selected if performance is issue
     this.gui.overview.resize();
     this.gui.powerUsage.resize();
     this.gui.settings.resize();
@@ -110,6 +154,8 @@ class SolarCarGUI {
     removeClassByClass(this.contentPanes, "maincontentpane", "mcselected");
     tabEl.classList.add("selecttab");
     paneEl.classList.add("mcselected");
+    this.selectedTabName = tab;
+    this.update();
   }
 }
 
