@@ -127,11 +127,12 @@ class PercentGauge extends UIMiniGauge {
         this.setFontSize(1.2);
         this.title.parentElement.parentElement.removeChild(this.title.parentElement);
         this.bodyContent.style.background = "unset";
-        this.setValue("Battery: 35%", 35);
+        this.setValue("Battery: 36%", 36);
     }
     setValue(text, percent) {
         this.bodyContent.innerText = text;
         if (percent <= 35) {
+            this.bodyContent.style.color = "#FF6347";
             // need to change the color to red
             //this.text.fontcolor("red");
             //window.alert("yes");
