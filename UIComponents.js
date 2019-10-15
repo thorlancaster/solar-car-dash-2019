@@ -127,15 +127,12 @@ class PercentGauge extends UIMiniGauge {
         this.setFontSize(1.2);
         this.title.parentElement.parentElement.removeChild(this.title.parentElement);
         this.bodyContent.style.background = "unset";
-        this.setValue("Battery: 36%", 36);
+        this.setValue("Battery: 33%", 33);
     }
     setValue(text, percent) {
         this.bodyContent.innerText = text;
-        if (percent <= 35) {
+        if (percent <= 30) {
             this.bodyContent.style.color = "#FF6347";
-            // need to change the color to red
-            //this.text.fontcolor("red");
-            //window.alert("yes");
         }
         this.body.style.background =
             "linear-gradient(90deg, #06A " + (percent - 0.01) + "%, #223 " + (percent + 0.01) + "%)";
@@ -146,6 +143,7 @@ class PercentGauge extends UIMiniGauge {
  * Class for UI graph, with a title bar on top and a canvas graph at the bottom
  * 2:1 default aspect ratio, can be changed
  */
+
 class UIGraph {
     constructor(el) {
         el.classList.add("uicompholder");
