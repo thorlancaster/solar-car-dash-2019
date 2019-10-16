@@ -16,6 +16,25 @@ class SolarCarData{
     this.powerOutHistory = new HistoryData(1000, 300);
     this.powerInHistory = new HistoryData(1000, 300);
   }
+  update(j){
+    if(j.speed)this.speed = parseInt(j.speed);
+    if(j.batteryPct) this.batteryPct = parseInt(j.batteryPct);
+
+    if(j.motor){
+      this.motor1Power = parseInt(j.power.motor1);
+      this.motor2Power = parseInt(j.power.motor2);
+      this.solarPower =  parseInt(j.power.solar);
+    }
+    
+    if(j.temp){
+      this.motor1Temp =  parseInt(j.temp.motor1);
+      this.motor2Temp =  parseInt(j.temp.motor2);
+      this.esc1Temp =    parseInt(j.temp.esc1);
+      this.esc2Temp =    parseInt(j.temp.esc2);
+      this.solarTemp =   parseInt(j.temp.solar);
+      this.batteryTemp = parseInt(j.temp.battery);
+    }
+  }
   getPowerOut(){
     return this.motor1Power + this.motor2Power;
   }

@@ -65,6 +65,7 @@ class SolarCarGUI {
 
     // Battery percentage
     var battPct = new PercentGauge(DGE("ov-battpct"));
+    battPct.setTitle("Battery")
     thisGui.battPct = battPct;
 
     // Clock

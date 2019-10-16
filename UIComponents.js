@@ -122,20 +122,31 @@ class UIMiniGauge {
 class PercentGauge extends UIMiniGauge {
     constructor(el) {
         super(el);
-        this.setTitle("");
-        this.setValue("");
-        this.setFontSize(1.2);
         this.title.parentElement.parentElement.removeChild(this.title.parentElement);
+        this.setTitle("");
+        this.setValue(0);
+        this.setFontSize(1.2);
+        this.warningValue = 30;
         this.bodyContent.style.background = "unset";
-        this.setValue("Battery: 33%", 33);
+        this.setValue(33);
     }
-    setValue(text, percent) {
-        this.bodyContent.innerText = text;
-        if (percent <= 30) {
-            this.bodyContent.style.color = "#FF6347";
-        }
-        this.body.style.background =
-            "linear-gradient(90deg, #06A " + (percent - 0.01) + "%, #223 " + (percent + 0.01) + "%)";
+    setTitle(name){
+      this.title = name;
+      this.doStyling();
+    }
+    setValue(percent) {
+      this.value = percent;
+      this.doStyling();
+    }
+    doStyling(){
+      this.bodyContent.innerText = this.title + ": " + this.value + "%";
+      if (this.value <= this.warningValue) {
+          this.bodyContent.style.color = "#FF6347";
+      } else {
+          this.bodyContent.style.color = "";
+      }
+      this.body.style.background =
+          "linear-gradient(90deg, #06A " + (this.value - 0.01) + "%, #223 " + (this.value + 0.01) + "%)";
     }
 }
 

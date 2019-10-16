@@ -1,0 +1,17 @@
+{
+  "power": {
+    "motor1": "2500",
+    "motor2": "4200",
+    "solar": "1280"
+  },
+  "temp": {
+    "motor1": "42",
+    "motor2": "48",
+    "solar": "52",
+    "battery": "33",
+    "esc1": "33",
+    "esc2": "35"
+  },
+  "speed": "46",
+  "batteryPct":"55";
+}
