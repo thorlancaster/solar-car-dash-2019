@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="theme-color" content="#000000">
     <title>Solar Car GUI</title>
-    <link href="default.css" rel="stylesheet" type="text/css"/>
-    <link href="UIPlacement.css" rel="stylesheet" type="text/css"/>
+    <link href="default.css" rel="stylesheet" type="text/css" />
+    <link href="UIPlacement.css" rel="stylesheet" type="text/css" />
     <script src="utils.js"></script>
     <script src="SolarCarData.js"></script>
     <script src="UIComponents.js"></script>
@@ -13,40 +14,44 @@
     <script src="GUI.js"></script>
     <script src="main.js"> </script>
 </head>
+
 <body onload="init()" onresize="resize()">
-  <div id="main">
-    <div id="topbar" class="tabctls">
-      <div onclick="GUI.setTab('overview')" class="tabctl tc-overview">Overview</div>
-      <div onclick="GUI.setTab('powerusage')" class="tabctl tc-powerusage">Power&nbsp;Usage</div>
-      <div onclick="GUI.setTab('settings')" class="tabctl tc-settings">Settings</div>
-    </div>
-    <div id="mcpanes">
-      <div class="maincontentpane mc-overview">
-        <div class="gauge" id="ov-speedometer"></div>
-        <div class="gauge" id="ov-powerout"></div>
-        <div class="gauge" id="ov-powerin"></div>
-        <div class="gauge" id="ov-batttemp"></div>
-        <div class="gauge" id="ov-solartemp"></div>
-        <div class="gauge" id="ov-motor1temp"></div>
-        <div class="gauge" id="ov-esc1temp"></div>
-        <div class="gauge" id="ov-motor2temp"></div>
-        <div class="gauge" id="ov-esc2temp"></div>
-        <div class="gauge" id="ov-battpct"></div>
-        <div class="gauge" id="ov-clockdisp"></div>
-      </div>
-      <div class="maincontentpane mc-powerusage">
-        <div class="gauge" id="pu-speedometer"></div>
-        <div class="gauge" id="pu-range"></div>
+    <div id="main">
+        <div id="topbar" class="tabctls">
+            <div onclick="GUI.setTab('overview')" class="tabctl tc-overview">Overview</div>
+            <div onclick="GUI.setTab('powerusage')" class="tabctl tc-powerusage">Power&nbsp;Usage</div>
+            <div onclick="GUI.setTab('settings')" class="tabctl tc-settings">Settings</div>
+        </div>
+        <div id="mcpanes">
+            <div class="maincontentpane mc-overview">
+                <div class="gauge" id="ov-speedometer"></div>
+                <div class="gauge" id="ov-powerout"></div>
+                <div class="gauge" id="ov-powerin"></div>
+                <div class="gauge" id="ov-batttemp"></div>
+                <div class="gauge" id="ov-solartemp"></div>
+                <div class="gauge" id="ov-motor1temp"></div>
+                <div class="gauge" id="ov-esc1temp"></div>
+                <div class="gauge" id="ov-motor2temp"></div>
+                <div class="gauge" id="ov-esc2temp"></div>
+                <div class="gauge" id="ov-battpct"></div>
+                <div class="gauge" id="ov-clockdisp"></div>
+            </div>
+            <div class="maincontentpane mc-powerusage">
+                <div class="gauge" id="pu-speedometer"></div>
+                <div class="gauge" id="pu-range"></div>
 
-        <div class="gauge" id="pu-efficiency"></div>
-        <div class="gauge" id="pu-solarchart"></div>
-        <div class="gauge" id="pu-powerchart"></div>
+                <div class="gauge" id="pu-efficiency"></div>
+                <div class="gauge" id="pu-solarchart"></div>
+                <div class="gauge" id="pu-powerchart"></div>
 
-      </div>
-      <div class="maincontentpane mc-settings">
-        <button>Settings are pending on Hardware Integration</button>
-      </div>
+            </div>
+            <div class="maincontentpane mc-settings">
+                <div class="gauge" id="set-notification"></div>
+                <div class="gauge" id="set-time"></div>
+                <div class="gauge" id="set-listcanbus"></div>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
+
 </html>
