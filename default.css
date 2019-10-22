@@ -179,10 +179,18 @@ canvas.uicompbodycontent, image.uicompbodycontent {
 button {
     background: linear-gradient(#9FB, #56F);
     border: 0.03em solid #006;
-    font-size: 122%;
+    /* font-size: 122%; */
     cursor: pointer;
 }
 
+/* .button .maincontentpane {
+    background: linear-gradient(0deg, #003, #001);
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: white;
+} */
 button:hover {
     background: linear-gradient(#FF2, #FA1);
 }

@@ -113,19 +113,19 @@ class SolarCarGUI {
         var notification = new UIGauge(DGE("set-notification"));
         notification.setTitle("");
         notification.setValue("Notifications")
-        notification.setFontSize(1.8);
+        notification.setFontSize(3);
         thisGui.notification = notification;
 
         var timezone = new UIGauge(DGE("set-time"));
         timezone.setTitle("")
         timezone.setValue("Time Zone");
-        timezone.setFontSize(1.8);
+        timezone.setFontSize(3);
         thisGui.timezone = timezone;
 
         var canBusInfo = new UIGauge(DGE("set-canbusinfo"));
         canBusInfo.setTitle("")
         canBusInfo.setValue("Can-Bus List");
-        canBusInfo.setFontSize(1.8);
+        canBusInfo.setFontSize(3);
         thisGui.canBusInfo = canBusInfo;
 
 
