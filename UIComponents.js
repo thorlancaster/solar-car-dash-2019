@@ -130,23 +130,23 @@ class PercentGauge extends UIMiniGauge {
         this.bodyContent.style.background = "unset";
         this.setValue(33);
     }
-    setTitle(name){
-      this.title = name;
-      this.doStyling();
+    setTitle(name) {
+        this.title = name;
+        this.doStyling();
     }
     setValue(percent) {
-      this.value = percent;
-      this.doStyling();
+        this.value = percent;
+        this.doStyling();
     }
-    doStyling(){
-      this.bodyContent.innerText = this.title + ": " + this.value + "%";
-      if (this.value <= this.warningValue) {
-          this.bodyContent.style.color = "#FF6347";
-      } else {
-          this.bodyContent.style.color = "";
-      }
-      this.body.style.background =
-          "linear-gradient(90deg, #06A " + (this.value - 0.01) + "%, #223 " + (this.value + 0.01) + "%)";
+    doStyling() {
+        this.bodyContent.innerText = this.title + ": " + this.value + "%";
+        if (this.value <= this.warningValue) {
+            this.bodyContent.style.color = "#FF6347";
+        } else {
+            this.bodyContent.style.color = "";
+        }
+        this.body.style.background =
+            "linear-gradient(90deg, #06A " + (this.value - 0.01) + "%, #223 " + (this.value + 0.01) + "%)";
     }
 }
 

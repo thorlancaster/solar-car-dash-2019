@@ -16,6 +16,7 @@ class SolarCarGUI {
         this.gui.settings = new GUICollection();
         this.initPaneOverview();
         this.initPanePowerUsage();
+        this.initSettings();
     }
     initPaneOverview() {
         var thisGui = this.gui.overview;
@@ -104,6 +105,30 @@ class SolarCarGUI {
         powerIn.setTitle("Solar Watts");
         powerIn.setXAxisText("Past 5 minutes");
         thisGui.powerIn = powerIn;
+    }
+
+    initSettings() {
+        var thisGui = this.gui.overview;
+
+        var notification = new UIGauge(DGE("set-notification"));
+        notification.setTitle("");
+        notification.setValue("Notifications")
+        notification.setFontSize(1.8);
+        thisGui.notification = notification;
+
+        var timezone = new UIGauge(DGE("set-time"));
+        timezone.setTitle("")
+        timezone.setValue("Time Zone");
+        timezone.setFontSize(1.8);
+        thisGui.timezone = timezone;
+
+        var canBusInfo = new UIGauge(DGE("set-canbusinfo"));
+        canBusInfo.setTitle("")
+        canBusInfo.setValue("Can-Bus List");
+        canBusInfo.setFontSize(1.8);
+        thisGui.canBusInfo = canBusInfo;
+
+
     }
 
     // Update the UI of the selected tab with a SolarCarData object (see SolarCarData.js)
