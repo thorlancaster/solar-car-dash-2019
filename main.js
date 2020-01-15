@@ -4,8 +4,9 @@
  *   A function resize() to be called when the page is resized
  *   Functions to poll the local server for data
  */
-var SERVER_PORT = 8000;
-var GUI, solarCarData;
+var SERVER_PORT = 8080;
+var GUI;
+var fetchData; // Data that was fetched from the server;
 
 function init() {
     GUI = new SolarCarGUI();
@@ -32,20 +33,24 @@ function tick() {
         solarCarData.updateHistory();
         tick.tick = 0;
     }
-    //fetchNewData();
+    fetchNewData();
     update();
     tick.tick++;
 }
 
 function fetchNewData() {
     var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", function(e) {
-        console.log(e.responseText);
+    xhr.addEventListener("load", function() {
+        fetchData = JSON.parse(this.responseText);
+        update();
     });
-    xhr.open("GET", "localhost:" + SERVER_PORT);
+    xhr.open("GET", "http://localhost:" + SERVER_PORT);
     xhr.send();
 }
 
+
 function update() {
-    GUI.update(solarCarData);
+  if(fetchData)
+    solarCarData.processFetchData(fetchData);
+  GUI.update(solarCarData);
 }

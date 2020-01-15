@@ -43,10 +43,12 @@ class SolarCarGUI {
         var battTemp = new UIMiniGauge(DGE("ov-batttemp"));
         battTemp.setTitle("Batt Temp");
         thisGui.battTemp = battTemp;
+
         // Solar temperature
-        var solarTemp = new UIMiniGauge(DGE("ov-solartemp"));
-        solarTemp.setTitle("Solar Temp");
-        thisGui.solarTemp = solarTemp;
+        // var solarTemp = new UIMiniGauge(DGE("ov-solartemp"));
+        // solarTemp.setTitle("Solar Temp");
+        // thisGui.solarTemp = solarTemp;
+
         // Motor1 temperature
         var motor1Temp = new UIMiniGauge(DGE("ov-motor1temp"));
         motor1Temp.setTitle("Motor1 Temp");
@@ -66,7 +68,7 @@ class SolarCarGUI {
 
         // Battery percentage
         var battPct = new PercentGauge(DGE("ov-battpct"));
-        battPct.setTitle("Battery")
+        battPct.setTitle("Battery");
         thisGui.battPct = battPct;
 
         // Clock
@@ -146,7 +148,7 @@ class SolarCarGUI {
                 o.powerIn.setValue(d.solarPower);
                 o.speed.setValue(d.speed);
                 o.battTemp.setValue(d.battTemp);
-                o.solarTemp.setValue(d.solarTemp);
+                o.battPct.setValue(d.batteryPct);
                 o.esc1Temp.setValue(d.esc1Temp);
                 o.esc2Temp.setValue(d.esc2Temp);
                 o.motor1Temp.setValue(d.motor1Temp);

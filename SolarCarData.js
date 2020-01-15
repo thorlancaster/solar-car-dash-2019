@@ -1,40 +1,60 @@
 class SolarCarData {
     constructor() {
-        this.speed = 45;
-        this.motor1Power = 2200;
-        this.motor1Temp = 55;
-        this.motor2Power = 2400;
-        this.motor2Temp = 58;
-        this.esc1Temp = 34;
-        this.esc2Temp = 37;
-        this.battTemp = 32;
-        this.solarTemp = 55;
-        this.solarPower = 1355;
-        this.batteryPct = 72;
+        this.speed = 0;
+        this.motor1Power = 0;
+        this.motor1Temp = 0;
+        this.motor2Power = 0;
+        this.motor2Temp = 0;
+        this.esc1Temp = 0;
+        this.esc2Temp = 0;
+        this.battTemp = 0;
+        this.solarPower = 0;
+        this.batteryPct = 100;
         this.time = new TimeData();
         this.efficiencyHistory = new HistoryData(1000, 300);
         this.powerOutHistory = new HistoryData(1000, 300);
         this.powerInHistory = new HistoryData(1000, 300);
     }
-    update(j) {
-        if (j.speed) this.speed = parseInt(j.speed);
-        if (j.batteryPct) this.batteryPct = parseInt(j.batteryPct);
 
-        if (j.motor) {
-            this.motor1Power = parseInt(j.power.motor1);
-            this.motor2Power = parseInt(j.power.motor2);
-            this.solarPower = parseInt(j.power.solar);
-        }
+    // Update this data with data from the Python server
+    // Accepts a parsed JSON object
+    processFetchData(d){
+      var t = this;
+      t.batteryPct = d.battery;
+      t.speed = d.speed;
 
-        if (j.temp) {
-            this.motor1Temp = parseInt(j.temp.motor1);
-            this.motor2Temp = parseInt(j.temp.motor2);
-            this.esc1Temp = parseInt(j.temp.esc1);
-            this.esc2Temp = parseInt(j.temp.esc2);
-            this.solarTemp = parseInt(j.temp.solar);
-            this.batteryTemp = parseInt(j.temp.battery);
-        }
+      t.motor1Power = d.power.motor1;
+      t.motor2Power = d.power.motor2;
+      t.solarPower = d.power.solar;
+
+      t.battTemp = d.temperature.battery;
+      t.esc1Temp = d.temperature.esc1;
+      t.esc2Temp = d.temperature.esc2;
+      t.motor1Temp = d.temperature.motor1;
+      t.motor2Temp = d.temperature.motor2;
     }
+
+
+    // update(j) {
+    //     if (j.speed) this.speed = parseInt(j.speed);
+    //     if (j.batteryPct) this.batteryPct = parseInt(j.batteryPct);
+    //
+    //     if (j.motor) {
+    //         this.motor1Power = parseInt(j.power.motor1);
+    //         this.motor2Power = parseInt(j.power.motor2);
+    //         this.solarPower = parseInt(j.power.solar);
+    //     }
+    //
+    //     if (j.temp) {
+    //         this.motor1Temp = parseInt(j.temp.motor1);
+    //         this.motor2Temp = parseInt(j.temp.motor2);
+    //         this.esc1Temp = parseInt(j.temp.esc1);
+    //         this.esc2Temp = parseInt(j.temp.esc2);
+    //         this.solarTemp = parseInt(j.temp.solar);
+    //         this.batteryTemp = parseInt(j.temp.battery);
+    //     }
+    // }
+
     getPowerOut() {
         return this.motor1Power + this.motor2Power;
     }
